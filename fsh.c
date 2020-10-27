@@ -3,10 +3,14 @@
 
 int main()
 {
+while (1){
+    
     
     char str[100]; 
     char str1[] = "cd";
-    int result;
+    char str2[] = "ls";
+    int result1;
+    int result2;
     
     gets(str); 
 	char delim[] = " "; 
@@ -18,12 +22,20 @@ int main()
 	}
     printf("\n");
     
-    result = strcmp(str, str1); 
-    if (result == 0)
+    result1 = strcmp(str, str1); 
+    if (result1 == 0)
     {
-        printf("We us the cd function");
+        printf("We use the cd function");
     }
     
-	return 0;
+    
+    result2 = strcmp(str, str2); 
+    if (result2 == 0)
+    {
+        printf("We use the ls function");
+    }
+    
 	
+}	
+return 0;
 }
