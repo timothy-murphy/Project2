@@ -22,17 +22,19 @@ while (1){
 	}
     printf("\n");
     
-    result1 = strcmp(str, str1); 
+    result1 = strcmp(str, str1); //if the user inputs “cd” then this if statement runs
     if (result1 == 0)
     {
         printf("We use the cd function");
+        //this will contain the code to use the cd command
     }
     
     
-    result2 = strcmp(str, str2); 
+    result2 = strcmp(str, str2); // if the user inputs “ls” then this if statement runs 
     if (result2 == 0)
     {
         printf("We use the ls function");
+	//this will contain the code to use the ls command 
     }
     
 	
