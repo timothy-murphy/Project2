@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include<unistd.h>
 
 int main()
 {
@@ -8,7 +9,7 @@ while (1){
     
     char str[100]; 
     char str1[] = "cd";
-    char str2[] = "ls";
+    char str2[] = "exit";
     int result1;
     int result2;
     
@@ -22,22 +23,31 @@ while (1){
 	}
     printf("\n");
     
-    result1 = strcmp(str, str1); //if the user inputs “cd” then this if statement runs
+    
+    
+    
+    
+    result1 = strcmp(str, str1); 
     if (result1 == 0)
     {
-        printf("We use the cd function");
-        //this will contain the code to use the cd command
+        int ret = chdir(str);   // Here dir equals the user's input.
+        printf(getcwd(str, 100));
+        //printf("chdir returned %d.\n", ret);
+
     }
     
     
-    result2 = strcmp(str, str2); // if the user inputs “ls” then this if statement runs 
+    result2 = strcmp(str, str2); 
     if (result2 == 0)
     {
-        printf("We use the ls function");
-	//this will contain the code to use the ls command 
+        //exit code
+        exit(0);
+        return (0);
+        
     }
     
 	
 }	
 return 0;
 }
+
