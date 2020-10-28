@@ -15,8 +15,25 @@ int main() {
     int stat_loc;
 
     while (1) {
-        input = readline("unixsh> ");
-        command = get_input(input);
+    
+    
+    
+ 
+       printf("fsh>");
+    	if(!fgets(line, BUFFER_LEN, stdin)){
+    	break;
+    	}
+    	if(strcmp(line, "exit\n")==0){
+    	break;
+	} 
+        
+        
+        
+        
+        
+        
+        
+        
 
         if (!command[0]) {      /* Handle empty commands */
             free(input);
