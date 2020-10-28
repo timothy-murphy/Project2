@@ -5,8 +5,8 @@
 int main()
 {
 while (1){
-    
-    
+                        
+                             
     char str[100]; 
     char str1[] = "cd";
     char str2[] = "exit";
@@ -24,10 +24,10 @@ while (1){
 		ptr = strtok(NULL, delim);
 	}
     printf("\n");
-    
-
+               
+                 
     result1 = strcmp(str, str1); 
-    if (result1 == 0)
+    if (result1 == 0) //cd function 
     {
         int ret = chdir(str);   // Here dir equals the user's input.
         printf(getcwd(str, 100));
