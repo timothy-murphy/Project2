@@ -38,11 +38,12 @@ while (1){
     result1 = strcmp(str, str1); 
     if (result1 == 0)
     {
-        int ret = chdir(str);   // Here dir equals the user's input.
-        printf("%s", getcwd(str, 100));
-        chdir(str);
-        printf("%s", getcwd(str, 100));
+       // int ret = chdir(str);   // Here dir equals the user's input.
+        printf("%s\n", getcwd(str, 100));
+        chdir("..");
+        printf("%s\n", getcwd(str, 100));
      //   printf("chdir returned %d.\n", ret);
+     return 0;
     }
     
     
