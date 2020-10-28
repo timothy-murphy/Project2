@@ -37,9 +37,10 @@ while (1){
     if (result1 == 0)
     {
         int ret = chdir(str);   // Here dir equals the user's input.
-        printf(getcwd(str, 100));
-        printf("chdir returned %d.\n", ret);
-
+        printf("%s", getcwd(str, 100));
+        chdir(str);
+        printf("%s", getcwd(str, 100));
+     //   printf("chdir returned %d.\n", ret);
     }
     
     
