@@ -57,21 +57,7 @@ while (1){
     }
     result3 = strcmp(str, str3);
     if (result3 ==0){
-	pid_t pid;
-	pid = fork();
-	if(pid<0){
-	printf(stderr, "fork failed");
-   	return 1;    }
-	else if(pid == 0){  
-   		execlp("bin/ls", "ls", NULL);
-	}
-	else{
-   		wait(NULL);
-   		printf("child complete\n");
-   	     }
-return 0;
-}
-	}	
+	
 }
 return 0;
 }
