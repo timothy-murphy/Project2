@@ -15,10 +15,10 @@ int main() {
     int stat_loc;
 
     while (1) {
-        input = readline("unixsh> ");
+        input = readline("fsh> ");
         command = get_input(input);
 
-        if (!command[0]) {      /* Handle empty commands */
+        if (!command[0]) {    
             free(input);
             free(command);
             continue;
@@ -29,7 +29,6 @@ int main() {
                 perror(command[1]);
             }
 
-            /* Skip the fork */
             continue;
         }
 
@@ -40,7 +39,6 @@ int main() {
         }
 
         if (child_pid == 0) {
-            /* Never returns if the call is successful */
             if (execvp(command[0], command) < 0) {
                 perror(command[0]);
                 exit(1);
