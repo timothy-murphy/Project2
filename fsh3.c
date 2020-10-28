@@ -49,22 +49,27 @@ while (1){
         
     }
      
-     result3 = strcmp(str, str3); 
-    if (result3 == 0)
-   {
-        fork();
-        //chek return value of fork 
-        // if 0 it meanss you are inside chile process 
-            //you need to exit the child 
-            // control then goes back to parent process 
-        //else you are inside parent 
-                //wait for the child to finish  
-                
-        //you try to execute it and it will give you message that it doesn't exist
-        //  //c library function which calls exec system call
-        execlp(str, str, (char *)NULL); //if i call ls then it does the ls commmand
-        //we have to figure out the ls-al system call 
-   }
+    int myShell_cd(char **args)
+{
+	if (args[1] == NULL) 
+	{
+		printf("myShell: expected argument to \"cd\"\n");
+	} 
+	else 
+	{
+		if (chdir(args[1]) != 0) 
+		{
+			perror("fsh>: ");
+		}
+	}
+	return 1;
+}
+
+int myShell_exit()
+{
+	QUIT = 1;
+	return 0;
+}
     
     
   
