@@ -70,6 +70,54 @@ int myShell_exit()
 	QUIT = 1;
 	return 0;
 }
+	int myShellLaunch(char **args)
+{
+	pid_t pid, wpid;
+	int status;
+	pid = fork();
+	if (pid == 0)
+	{
+		// The Child Process
+		if (execvp(args[0], args) == -1)
+		{
+			perror("fsh>: ");
+		}
+	exit(EXIT_FAILURE);
+	}
+	else if (pid < 0)
+	{
+		//Forking Error
+		perror("fsh>: ");
+	}
+	else
+	{
+		// The Parent Process
+	do 
+	{
+      wpid = waitpid(pid, &status, WUNTRACED);
+    } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+	}
+	return 1;
+}
+
+// Function to execute command from terminal
+int execShell(char **args)
+{
+	int ret;
+	if (args[0] == NULL)
+	{
+		// Empty command
+		return 1;
+	}
+	// Loop to check for builtin functions
+	for (int i=0; i< numBuiltin(); i++) // numBuiltin() returns the number of builtin functions
+	{
+		if(strcmp(args[0], builtin_cmd[i])==0) // Check if user function matches builtin function name
+			return (*builtin_func[i])(args); // Call respective builtin function with arguments
+	}
+	ret = myShellLaunch(args);
+	return ret;
+}
     
     
   
