@@ -11,8 +11,10 @@ int main()
 	char str[100]; 
     char str1[] = "cd";
     char str2[] = "exit";
+    char str3[] = "ls";
     int result1;
     int result2;
+    int result3;
     char line[BUFFER_LEN];
     char* argv[100];
     char* path= "/bin/";
@@ -52,8 +54,15 @@ while (1){
         return (0);
         
     }
-    
+    result3 = strcmp(str, str3);
+    if (result3 ==0){
+    char *file_name = "ls";
+    char *arg1 = "-a";
+    char *arg2 = "-s";
+    execlp(file_name, file_name, arg1, arg2, NULL);
+    //execlp(str, str, (char *)NULL);
 	
 }	
+}
 return 0;
 }
