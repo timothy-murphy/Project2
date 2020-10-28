@@ -1,1 +1,1 @@
-The main goal of project 2 was to create our own Linux shell writing in C code. 
+The main goal of project 2 was to create our own Linux shell writing in C code. Within this file we have written C code to help us create a simple shell that gives us basic commands. The commands that are implemented are: "ls", "cd", "exit". These basic Linux commands help us navigate through the terminal in between files. 
