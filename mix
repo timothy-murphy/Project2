@@ -4,7 +4,7 @@
 #include <unistd.h> // For fork(), pid_t
 #include <sys/wait.h> // For waitpid() and associated macros
 
-char SHELL_NAME[50] = "myShell";
+char SHELL_NAME[50] = "fsh>";
 int QUIT = 0;
 
 // Function to read a line from command into the buffer
@@ -129,14 +129,14 @@ int myShellLaunch(char **args)
 		// The Child Process
 		if (execvp(args[0], args) == -1)
 		{
-			perror("myShell: ");
+			perror("fsh>: ");
 		}
 	exit(EXIT_FAILURE);
 	}
 	else if (pid < 0)
 	{
 		//Forking Error
-		perror("myShell: ");
+		perror("fsh>: ");
 	}
 	else
 	{
@@ -166,33 +166,6 @@ int execShell(char **args)
 	}
 	ret = myShellLaunch(args);
 	return ret;
-}
-
-// Read and Parse from Config File
-int readConfig()
-{
-	FILE *fptr;
-	char line[200];
-	char **args;
-	fptr = fopen("config", "r");
-	if (fptr == NULL)
-	{
-		printf("Unable to find config file.\n");
-		return 1;
-	}
-	else
-	{
-		while(fgets(line, sizeof(line), fptr) != NULL)
-		{
-			printf("\n%s", line);
-			args=splitLine(line);
-			if(strcmp(args[0], "export")==0)
-				strcpy(SHELL_NAME, args[1]);
-		}
-	}
-	free(args);
-	fclose(fptr);
-	return 1;
 }
 
 // When myShell is called Interactively
@@ -242,8 +215,7 @@ int myShellScript(char filename[100])
 
 int main(int argc, char **argv)
 {
-	// Read from myShell Configuration Files
-	readConfig();
+
 	// Parsing commands Interactive mode or Script Mode
 	if (argc == 1)
 		myShellInteract();
