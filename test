@@ -23,8 +23,7 @@ int main()
         exit(1);
     }
     
-    printf("\n");
-    printf("Enter a command ");
+    printf("fsh>");
     characters = getline(&buffer,&bufsize,stdin);
    token = strtok(buffer, s);
    
@@ -35,9 +34,25 @@ int main()
         printf("exit worked");
         exit(0);
     }
-    if (strcmp(token, "ls")==0){
-        printf("ls worked");
-        execlp("ls", "ls", (char *)NULL);
+    if (strcmp(token, "cd") ==0){
+        printf("cd worked\n");
+    }
+    else{
+
+        pid_t child_pid = fork();
+       if (child_pid == -1)
+           perror("fork");
+       else if (child_pid == 0)
+           {
+           execlp(token, token, (char *)NULL);
+
+            }
+       else
+            {
+           token = strtok(NULL, " \n");
+          
+             }
+
     }
       token = strtok(NULL, " \n");
    }
