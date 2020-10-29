@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int input(char *s,int length);
+
+int main()
+{
+    while(1){//begining of while loop
+    char *buffer;
+    size_t bufsize = 32;
+    size_t characters;
+    const char s[2] = " ";
+    char *token;
+    
+    
+
+    buffer = (char *)malloc(bufsize * sizeof(char));
+    if( buffer == NULL)
+    {
+        perror("Unable to run stuff");
+        exit(1);
+    }
+    printf("Enter a command ");
+    characters = getline(&buffer,&bufsize,stdin);
+    //printf("%zu characters were read.\n",characters);
+    printf("%s\n",buffer);
+    //buffer is the name of ther string that I put in strtok()
+    
+    /* get the first token */
+   token = strtok(buffer, s);
+   
+   /* walk through other tokens */
+   while( token != NULL ) {
+      printf( " %s", token );
+    
+      token = strtok(NULL, s);
+   }
+    
+    
+    
+    
+    //end of while loop
+    }
+    return(0);
+}
