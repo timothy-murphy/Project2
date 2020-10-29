@@ -9,7 +9,7 @@ int input(char *s,int length);
 int main()
 {
     while(1){//begining of while loop
-
+    char dir[100];
     char *buffer;
     size_t bufsize = 32;
     size_t characters;
@@ -22,8 +22,9 @@ int main()
         perror("Unable to run stuff");
         exit(1);
     }
-    
     printf("fsh>");
+
+    
     characters = getline(&buffer,&bufsize,stdin);
    token = strtok(buffer, s);
    
@@ -31,11 +32,12 @@ int main()
    while( token != NULL ) {
       //printf( " %s\n", token );
     if(strcmp(token, "exit") == 0){
-        printf("exit worked");
         exit(0);
     }
     if (strcmp(token, "cd") ==0){
-        printf("cd worked\n");
+        char *token2 = strtok(NULL, " \n");
+        chdir(token2);
+        printf("%s\n", getcwd(dir, 100));
     }
     else{
 
@@ -45,14 +47,7 @@ int main()
        else if (child_pid == 0)
            {
            execlp(token, token, (char *)NULL);
-
             }
-       else
-            {
-           token = strtok(NULL, " \n");
-          
-             }
-
     }
       token = strtok(NULL, " \n");
    }
@@ -60,3 +55,6 @@ int main()
     }
     return(0);
 }
+
+
+
