@@ -9,8 +9,8 @@ int main()
     char *buffer;
     size_t bufsize = 32;
     size_t characters;
-    const char s[2] = " ";
-    char *token;
+    const char s[2] = " ";//this is the space between the inputs. 
+    char *token; 
     
     
 
@@ -23,8 +23,10 @@ int main()
     printf("Enter a command ");
     characters = getline(&buffer,&bufsize,stdin);
     //printf("%zu characters were read.\n",characters);
-    printf("%s\n",buffer);
+    printf("%s",buffer);
     //buffer is the name of ther string that I put in strtok()
+    
+    
     
     /* get the first token */
    token = strtok(buffer, s);
@@ -34,7 +36,28 @@ int main()
       printf( " %s", token );
     
       token = strtok(NULL, s);
+      
+      
+      if (strcmp(token, "exit") == 0)
+       {
+           printf("Exit Worked!!");
+    exit(0);
+    return(0);
+        }
+   else
+       {
+    printf("I like cheese more.");
+         }
+      
    }
+   
+   
+   
+   
+   
+   
+   // where it takes in the user input and decides 
+   
     
     
     
