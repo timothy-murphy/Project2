@@ -36,9 +36,10 @@ int main()
     }
     if (strcmp(token, "cd")==0){
         printf("cd worked");
-        
     }
+      token = strtok(NULL, " \n");
    }
+
     }
     return(0);
 }
