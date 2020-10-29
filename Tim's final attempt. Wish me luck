@@ -1,3 +1,5 @@
+#define _GNU_SOURCE
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -6,52 +8,37 @@ int input(char *s,int length);
 int main()
 {
     while(1){//begining of while loop
+
     char *buffer;
     size_t bufsize = 32;
     size_t characters;
-    const char s[2] = " ";//this is the space between the inputs. 
+    const char s[2] = "\n";//this is the space between the inputs. 
     char *token; 
-    char *token2;
-    char variable  = "exit";
-    
+  
     buffer = (char *)malloc(bufsize * sizeof(char));
     if( buffer == NULL)
     {
         perror("Unable to run stuff");
         exit(1);
     }
+    
+    printf("\n");
     printf("Enter a command ");
     characters = getline(&buffer,&bufsize,stdin);
-    //printf("%zu characters were read.\n",characters);
-    printf("%s",buffer);
-    //buffer is the name of ther string that I put in strtok()
-
-    /* get the first token */
    token = strtok(buffer, s);
    
    /* walk through other tokens */
    while( token != NULL ) {
-      printf( "%s", token );
-    
-      token2 = strtok(NULL, s);
-      printf("\n");
-      printf("%s\n",token2);
-      //compares the token to the varible to see if it will exit the program
-      
-      if (strcmp(token, variable) == 0)
-       {
-           printf("Exit Worked!!");
-    exit(0);
-    return(0);
-        }
-   else
-       {
-    printf("exit did not work");
-    return(0);
-         }
-      
+      //printf( " %s\n", token );
+    if(strcmp(token, "exit") == 0){
+        printf("exit worked");
+        exit(0);
+    }
+    if (strcmp(token, "cd")==0){
+        printf("cd worked");
+        
+    }
    }
-   
     }
     return(0);
 }
